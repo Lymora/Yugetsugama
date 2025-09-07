@@ -21,7 +21,7 @@
 - 結果として、**AIが全体の7〜8割を構築し、人間が仕上げと検証を担う**形となった
 
 ## 公開URL
-👉 [GitHub Pages で閲覧する]（https://lymora.github.io/Yugetsugama/）
+👉 [GitHub Pages で閲覧する]（ https://lymora.github.io/Yugetsugama/ ）
 
 ## ファイル構成
 index.html
@@ -44,4 +44,5 @@ markdown
 ## 備考
 - 本サイトは架空の工房「悠月窯」を題材とした実習用であり、実在の作品・販売は行っていません。  
 - JSON-LD で構造化データを記述し、検索エンジンに作品情報を伝える工夫も行っています。  
+
 - フォーム送信は `mailto:` を利用しており、動作は利用環境に依存します。実運用では外部サービスを推奨します。
