@@ -1,0 +1,117 @@
+/* === Mizuki Kiln styles (STEP2 Enhanced) === */
+:root{
+  --deep-navy:#0B1E2D;
+  --ocean:#1B3A4B;
+  --moon:#F3E6C1;
+  --accent:#D4B483;
+  --mist:#A3BFD9;
+  --focus:#FFE9B8;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--deep-navy);
+  color:var(--moon);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:1120px;margin-inline:auto;padding:0 16px}
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:16px;top:8px;width:auto;height:auto;background:#000;color:#fff;padding:8px 12px;border-radius:6px}
+
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+
+.site-header{position:sticky;top:0;background:rgba(11,30,45,.8);backdrop-filter:saturate(120%) blur(6px);
+  border-bottom:1px solid rgba(163,191,217,.25);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:inline-block;padding:12px 4px;color:var(--moon);text-decoration:none;font-weight:700;letter-spacing:.02em}
+.site-menu{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+.site-menu a{display:inline-block;padding:12px 10px;color:var(--mist);text-decoration:none}
+.site-menu a:hover,.site-menu a:focus{color:var(--moon)}
+.nav-toggle{display:none;background:transparent;border:1px solid rgba(163,191,217,.4);color:var(--moon);padding:8px 10px;border-radius:6px}
+
+.view-toggle{display:flex;gap:8px;margin:6px 0 16px}
+.view-btn{padding:6px 10px;border-radius:999px;border:1px solid rgba(163,191,217,.35);background:transparent;color:var(--moon);cursor:pointer;font-size:14px}
+.view-btn.active,.view-btn:focus{border-color:var(--accent);color:var(--accent);outline:none}
+
+.hero{position:relative;border-bottom:1px solid rgba(163,191,217,.2);overflow:clip}
+.hero picture{position:absolute;inset:0;z-index:-1;display:block;opacity:.6}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(140px 140px at 70% 30%, rgba(243,230,193,.9), transparent 60%),
+    linear-gradient(180deg, #102738 0%, #0B1E2D 60%);
+  z-index:-2;
+}
+.hero-inner{padding:96px 0 72px;text-align:center}
+.lead{color:var(--mist);max-width:60ch;margin:8px auto 0}
+.cta{margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:var(--accent);color:#1a1206;text-decoration:none;font-weight:700;border:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.btn.small{padding:6px 10px;font-size:14px}
+
+.about{padding:56px 0}
+.about-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.about-grid article{background:rgba(27,58,75,.4);border:1px solid rgba(163,191,217,.25);border-radius:16px;padding:16px}
+
+.gallery{padding:56px 0;border-top:1px solid rgba(163,191,217,.2);border-bottom:1px solid rgba(163,191,217,.2)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px}
+.subfilters{border:1px dashed rgba(163,191,217,.35);padding:8px 12px;border-radius:12px;color:var(--mist);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.filter-btn{padding:8px 12px;border-radius:999px;border:1px solid rgba(163,191,217,.35);background:transparent;color:var(--moon);cursor:pointer}
+.filter-btn.active,.filter-btn:focus{outline:none;border-color:var(--accent);color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+.card{background:rgba(27,58,75,.4);border:1px solid rgba(163,191,217,.25);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{position:relative;aspect-ratio:3/2;background:linear-gradient(135deg, #1B3A4B, #0B1E2D)}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.badge{position:absolute;top:10px;right:10px;background:rgba(212,180,131,.95);color:#1a1206;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
+.card-body{padding:12px 14px}
+.item-title{margin:0 0 6px 0;font-size:18px}
+.item-desc{margin:0 0 10px 0;color:var(--mist)}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0}
+.spec dt{color:var(--mist)}
+.spec dd{margin:0}
+
+/* 仕様表を4列グリッド化： 1-2列=左、3-4列=右 */
+.spec{
+  display:grid;
+  grid-template-columns: auto 1fr auto 1fr; /* 左ラベル/値 | 右ラベル/値 */
+  column-gap:12px;
+  row-gap:6px;
+}
+
+/* 子divの箱を溶かして dt/dd をグリッドに直接並べる */
+.spec > div{ display:contents; }
+
+/* 通常（1行目=左側、3行目=左側）→ 何もしない */
+
+/* 2行目（焼成）を右側へ */
+.spec > div:nth-child(2) dt { grid-column: 3; }
+.spec > div:nth-child(2) dd { grid-column: 4; }
+
+/* 4行目（重さ or 容量/重さ）を右側へ */
+.spec > div:nth-child(4) dt { grid-column: 3; }
+.spec > div:nth-child(4) dd { grid-column: 4; }
+
+.contact{padding:56px 0}
+.form{display:grid;gap:12px;max-width:560px}
+.field{display:grid;gap:6px}
+input,textarea{background:rgba(27,58,75,.5);border:1px solid rgba(163,191,217,.35);color:var(--moon);padding:10px;border-radius:8px}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.req{color:var(--accent);margin-left:4px}
+.privacy{color:var(--mist);font-size:14px}
+
+.site-footer{padding:24px 0;color:var(--mist);font-size:14px;text-align:center}
+
+@media (max-width: 768px){
+  .site-menu{display:none;flex-direction:column;background:rgba(11,30,45,.95);position:absolute;right:16px;top:56px;border:1px solid rgba(163,191,217,.25);border-radius:12px;padding:8px;min-width:180px}
+  .nav-toggle{display:inline-block}
+  .grid{grid-template-columns:1fr}
+}
+@media (min-width: 768px){
+  .about-grid{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
